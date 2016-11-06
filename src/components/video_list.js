@@ -1,12 +1,21 @@
 import React, { Component } from 'react';
-import ReactDom from 'react-dom';
+import VideoListItem from './video_list_item'
 
-const VideoList = (props) => {
-    return(
-        <ul className="col-md-4 list-group">
-            {props.videos.length}
-        </ul>
-    )
+class VideoList extends Component {
+    constructor(props) {
+        super(props);
+
+    }
+
+    render() {
+        const videoItems = this.props.videos.map(video => <VideoListItem key={video.etag} video={video}/>);
+
+        return (
+            <ul className="col-md-4 list-group">
+                {videoItems}
+            </ul>
+        );
+    }
 }
 
 export default VideoList;
